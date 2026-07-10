@@ -1,0 +1,20 @@
+ui:
+  title: VibeNest template monitoring
+  header: Personal uptime monitoring
+
+endpoints:
+  - name: VibeNest platform
+    group: template
+    url: https://vibenest.net/healthz
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 3000"
+
+  - name: GitHub API
+    group: external
+    url: https://api.github.com
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 5000"
