@@ -3,7 +3,16 @@ services:
     build: .
     restart: unless-stopped
     expose:
-      - "8080"
+    - "8080"
     environment:
       GATUS_CONFIG_PATH: /config/config.yaml
       GATUS_LOG_LEVEL: INFO
+    deploy:
+      resources:
+        limits:
+          memory: '268435456'
+          cpus: 0.25
+        reservations: {}
+    mem_limit: 268435456
+    memswap_limit: 268435456
+    cpus: 0.25
